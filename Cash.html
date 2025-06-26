@@ -36,6 +36,10 @@
       font-size: 1.1rem;
       border-radius: 25px;
     }
+    .btn-rooster, .btn-ausencias {
+      font-size: 1.1rem;
+      border-radius: 25px;
+    }
   </style>
 </head>
 <body>
@@ -65,6 +69,10 @@
       <h4 class="mb-3">🔎 Ingresa el Rider ID</h4>
       <input type="number" class="form-control mb-3" id="inputNumber" placeholder="Rider ID aquí, plz" required>
       <button class="btn btn-outline-success w-100" onclick="sendLink()">¡VAMOS!</button>
+      <div class="d-flex gap-2 mt-3">
+        <button class="btn btn-primary w-50 btn-rooster" onclick="openRooster()">🐓 Rooster</button>
+        <button class="btn btn-primary w-50 btn-ausencias" onclick="openAusencias()">📆 Ausencias</button>
+      </div>
     </div>
   </div>
 
@@ -86,6 +94,24 @@
       const url = `https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/cash-collection/courier/${input}`;
       window.open(url, '_blank');
       inputField.value = '';
+    }
+
+    function openRooster() {
+      if (selectedCountry === 'ninguno') {
+        alert('Primero selecciona un país.');
+        return;
+      }
+      const roosterUrl = `https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/workers?filter_status=active_contract&page=1&size=10`;
+      window.open(roosterUrl, '_blank');
+    }
+
+    function openAusencias() {
+      if (selectedCountry === 'ninguno') {
+        alert('Primero selecciona un país.');
+        return;
+      }
+      const ausenciasUrl = `https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/absence`;
+      window.open(ausenciasUrl, '_blank');
     }
 
     document.getElementById('inputNumber').addEventListener('keypress', function (e) {
