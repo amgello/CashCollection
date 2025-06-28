@@ -104,11 +104,16 @@
     }
 
     function openRooster() {
+      const input = document.getElementById('inputNumber').value;
       if (selectedCountry === 'ninguno') {
         alert('Primero selecciona un país.');
         return;
       }
-      const roosterUrl = `https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/workers?filter_status=active_contract&page=1&size=10`;
+      if (!input || isNaN(input)) {
+        alert('Por favor, ingresa un Rider ID válido.');
+        return;
+      }
+      const roosterUrl = `https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/workers?search_id=${input}`;
       window.open(roosterUrl, '_blank');
     }
 
