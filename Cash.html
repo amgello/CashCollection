@@ -6,69 +6,157 @@
   <title>PEYA Shortcuts</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+    :root {
+      --color-bg-dark: #0d1117;
+      --color-text-dark: #e6edf3;
+      --color-box-dark: #161b22;
+      --color-shadow-dark: rgba(0, 0, 0, 0.7);
+      --color-border-dark: #30363d;
+
+      --color-bg-light: #f4f4f4;
+      --color-text-light: #333;
+      --color-box-light: white;
+      --color-shadow-light: rgba(0, 0, 0, 0.1);
+      --color-border-light: #ddd;
+    }
+
     body {
       padding: 40px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background 0.5s ease;
+      transition: background 0.4s ease, color 0.4s ease;
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-dark);
     }
+
+    body.light-mode {
+      background-color: var(--color-bg-light);
+      color: var(--color-text-light);
+    }
+
     .country-buttons button {
       margin: 6px;
       font-weight: bold;
       border-radius: 30px;
+      transition: all 0.3s;
     }
+
+    .country-buttons button.active {
+      border: 2px solid #ffffff;
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    body.light-mode .country-buttons button.active {
+      border: 2px solid #000000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
     .input-section {
       max-width: 400px;
       margin-top: 40px;
-      background-color: white;
       border-radius: 20px;
       padding: 30px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      background-color: var(--color-box-dark);
+      box-shadow: 0 8px 20px var(--color-shadow-dark);
+      border: 1px solid var(--color-border-dark);
+      transition: background 0.3s, box-shadow 0.3s;
     }
+
+    body.light-mode .input-section {
+      background-color: var(--color-box-light);
+      box-shadow: 0 8px 20px var(--color-shadow-light);
+      border: 1px solid var(--color-border-light);
+    }
+
     h1, h2 {
       font-weight: 700;
-      color: #333;
     }
+
     input[type="number"] {
       text-align: center;
       font-size: 1.2rem;
       -moz-appearance: textfield;
     }
+
     input[type="number"]::-webkit-outer-spin-button,
     input[type="number"]::-webkit-inner-spin-button {
       -webkit-appearance: none;
       margin: 0;
     }
+
     .btn-outline-success {
       font-size: 1.1rem;
       border-radius: 25px;
     }
+
     .btn-rooster, .btn-ausencias {
       font-size: 1.1rem;
       border-radius: 25px;
     }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .sops-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .btn.position-relative .badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background-color: red;
+      color: white;
+      font-size: 0.6rem;
+      padding: 3px 6px;
+      border-radius: 20px;
+    }
   </style>
 </head>
 <body>
+  <div class="sops-link">
+    <div class="position-relative">
+      <a href="https://amgello.github.io/CashCollection/Boost.html" class="btn btn-warning position-relative">
+        🛠️ SOPs
+        <span class="badge" id="badgeSops">new</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="theme-toggle">
+    <div class="position-relative">
+      <button class="btn btn-secondary position-relative" onclick="toggleTheme()">
+        🌓 dark mode
+        <span class="badge" id="badgeNew">new</span>
+      </button>
+    </div>
+  </div>
+
   <div class="container text-center">
     <h1 class="mb-2">🚀 Cash Collection PEYA</h1>
     <h2 class="mb-4">País seleccionado: <span id="selectedCountryDisplay">NN</span></h2>
 
-    <div class="country-buttons d-flex flex-wrap justify-content-center">
-      <button class="btn btn-primary" onclick="setCountry('ar', '#d0e8ff')">AR</button>
-      <button class="btn btn-success" onclick="setCountry('bo', '#e8fce8')">BO</button>
-      <button class="btn btn-warning" onclick="setCountry('cl', '#fff5d0')">CL</button>
-      <button class="btn btn-danger" onclick="setCountry('cr', '#ffdada')">CR</button>
-      <button class="btn btn-info" onclick="setCountry('do', '#d1f3f9')">DO</button>
-      <button class="btn btn-success" onclick="setCountry('ec', '#e6f9e6')">EC</button>
-      <button class="btn btn-danger" onclick="setCountry('gt', '#ffe6e6')">GT</button>
-      <button class="btn btn-primary" onclick="setCountry('hn', '#d0e8ff')">HN</button>
-      <button class="btn btn-warning" onclick="setCountry('ni', '#fffacc')">NI</button>
-      <button class="btn btn-success" onclick="setCountry('pa', '#d4f7dc')">PA</button>
-      <button class="btn btn-danger" onclick="setCountry('pe', '#ffdada')">PE</button>
-      <button class="btn btn-warning" onclick="setCountry('py', '#fff5d0')">PY</button>
-      <button class="btn btn-info" onclick="setCountry('sv', '#d1f3f9')">SV</button>
-      <button class="btn btn-primary" onclick="setCountry('uy', '#d0e8ff')">UY</button>
-      <button class="btn btn-success" onclick="setCountry('ve', '#e8fce8')">VE</button>
+    <div class="country-buttons d-flex flex-wrap justify-content-center" id="countryBtns">
+      <button class="btn btn-primary" onclick="setCountry(this, 'ar', '#1e2f3f', '#d0e8ff')">AR</button>
+      <button class="btn btn-success" onclick="setCountry(this, 'bo', '#1f3f1f', '#e8fce8')">BO</button>
+      <button class="btn btn-warning" onclick="setCountry(this, 'cl', '#3f351e', '#fff5d0')">CL</button>
+      <button class="btn btn-danger" onclick="setCountry(this, 'cr', '#3f1e1e', '#ffdada')">CR</button>
+      <button class="btn btn-info" onclick="setCountry(this, 'do', '#1e3f3f', '#d1f3f9')">DO</button>
+      <button class="btn btn-success" onclick="setCountry(this, 'ec', '#1f3f1f', '#e6f9e6')">EC</button>
+      <button class="btn btn-danger" onclick="setCountry(this, 'gt', '#3f1e1e', '#ffe6e6')">GT</button>
+      <button class="btn btn-primary" onclick="setCountry(this, 'hn', '#1e2f3f', '#d0e8ff')">HN</button>
+      <button class="btn btn-warning" onclick="setCountry(this, 'ni', '#3f3a1e', '#fffacc')">NI</button>
+      <button class="btn btn-success" onclick="setCountry(this, 'pa', '#1e3f2a', '#d4f7dc')">PA</button>
+      <button class="btn btn-danger" onclick="setCountry(this, 'pe', '#3f1e1e', '#ffdada')">PE</button>
+      <button class="btn btn-warning" onclick="setCountry(this, 'py', '#3f351e', '#fff5d0')">PY</button>
+      <button class="btn btn-info" onclick="setCountry(this, 'sv', '#1e3f3f', '#d1f3f9')">SV</button>
+      <button class="btn btn-primary" onclick="setCountry(this, 'uy', '#1e2f3f', '#d0e8ff')">UY</button>
+      <button class="btn btn-success" onclick="setCountry(this, 've', '#1f3f1f', '#e8fce8')">VE</button>
     </div>
 
     <div class="input-section mx-auto">
@@ -84,52 +172,61 @@
 
   <script>
     let selectedCountry = 'ninguno';
+    let selectedButton = null;
 
-    function setCountry(countryCode, backgroundColor) {
+    function setCountry(button, countryCode, darkBg, lightBg) {
       selectedCountry = countryCode.toLowerCase();
       document.getElementById('selectedCountryDisplay').textContent = countryCode.toUpperCase();
-      document.body.style.background = backgroundColor;
+      document.body.style.background = document.body.classList.contains('light-mode') ? lightBg : darkBg;
+
+      if (selectedButton) selectedButton.classList.remove('active');
+      selectedButton = button;
+      selectedButton.classList.add('active');
     }
 
     function sendLink() {
-      const inputField = document.getElementById('inputNumber');
-      const input = inputField.value;
-      if (!input || isNaN(input)) {
-        alert('Por favor, ingresa un número válido.');
-        return;
-      }
-      const url = `https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/cash-collection/courier/${input}`;
-      window.open(url, '_blank');
-      inputField.value = '';
+      const input = document.getElementById('inputNumber').value;
+      if (!input || isNaN(input)) return alert('Por favor, ingresa un número válido.');
+      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/cash-collection/courier/${input}`, '_blank');
+      document.getElementById('inputNumber').value = '';
     }
 
     function openRooster() {
       const input = document.getElementById('inputNumber').value;
-      if (selectedCountry === 'ninguno') {
-        alert('Primero selecciona un país.');
-        return;
-      }
-      if (!input || isNaN(input)) {
-        alert('Por favor, ingresa un Rider ID válido.');
-        return;
-      }
-      const roosterUrl = `https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/workers?search_id=${input}`;
-      window.open(roosterUrl, '_blank');
+      if (selectedCountry === 'ninguno') return alert('Primero selecciona un país.');
+      if (!input || isNaN(input)) return alert('Por favor, ingresa un Rider ID válido.');
+      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/workers?search_id=${input}`, '_blank');
     }
 
     function openAusencias() {
-      if (selectedCountry === 'ninguno') {
-        alert('Primero selecciona un país.');
-        return;
-      }
-      const ausenciasUrl = `https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/absence`;
-      window.open(ausenciasUrl, '_blank');
+      if (selectedCountry === 'ninguno') return alert('Primero selecciona un país.');
+      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/absence`, '_blank');
     }
 
-    document.getElementById('inputNumber').addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        sendLink();
+    function toggleTheme() {
+      document.body.classList.toggle('light-mode');
+      const mode = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+      localStorage.setItem('theme', mode);
+      if (selectedButton) selectedButton.click();
+    }
+
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') document.body.classList.add('light-mode');
+
+      // Ocultar la bolita "new" después del 31 de julio 2025
+      const today = new Date();
+      const cutoff = new Date('2025-08-01');
+      if (today >= cutoff) {
+        const badge = document.getElementById('badgeNew');
+        if (badge) badge.style.display = 'none';
+        const badge2 = document.getElementById('badgeSops');
+        if (badge2) badge2.style.display = 'none';
       }
+    };
+
+    document.getElementById('inputNumber').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') sendLink();
     });
   </script>
 </body>
