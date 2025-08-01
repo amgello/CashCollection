@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PEYA Shortcuts</title>
+  <title>Hurrier Orders</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     :root {
@@ -105,6 +105,7 @@
       top: 20px;
       left: 20px;
     }
+
     .cash-link {
       position: absolute;
       top: 75px;
@@ -178,12 +179,16 @@
       }
     }
   </style>
+
+
+
+
 </head>
 <body>
   <div class="cash-link">
     <div class="position-relative">
-      <a href="https://amgello.github.io/CashCollection/Orders.html" class="btn btn-danger position-relative">
-        🥗 Pedidos
+      <a href="https://amgello.github.io/CashCollection/Cash.html" class="btn btn-danger position-relative">
+        💵 Cash Collection
         <span class="badge" id="badgeSops">new</span>
       </a>
     </div>
@@ -208,40 +213,41 @@
   </div>
 
   <div class="container text-center">
-    <h1 class="mb-2">🚀 Cash Collection PEYA</h1>
+    <h1 class="mb-2">🚀 HU Orders PEYA</h1>
     <h2 class="mb-4">País seleccionado: <span id="selectedCountryDisplay">NN</span></h2>
 
     <div class="country-buttons d-flex flex-wrap justify-content-center" id="countryBtns">
-      <button class="btn btn-primary" onclick="setCountry(this, 'ar', '#1e2f3f', '#d0e8ff')">AR</button>
-      <button class="btn btn-success" onclick="setCountry(this, 'bo', '#1f3f1f', '#e8fce8')">BO</button>
-      <button class="btn btn-warning" onclick="setCountry(this, 'cl', '#3f351e', '#fff5d0')">CL</button>
-      <button class="btn btn-danger" onclick="setCountry(this, 'cr', '#3f1e1e', '#ffdada')">CR</button>
-      <button class="btn btn-info" onclick="setCountry(this, 'do', '#1e3f3f', '#d1f3f9')">DO</button>
-      <button class="btn btn-success" onclick="setCountry(this, 'ec', '#1f3f1f', '#e6f9e6')">EC</button>
-      <button class="btn btn-danger" onclick="setCountry(this, 'gt', '#3f1e1e', '#ffe6e6')">GT</button>
-      <button class="btn btn-primary" onclick="setCountry(this, 'hn', '#1e2f3f', '#d0e8ff')">HN</button>
-      <button class="btn btn-warning" onclick="setCountry(this, 'ni', '#3f3a1e', '#fffacc')">NI</button>
-      <button class="btn btn-success" onclick="setCountry(this, 'pa', '#1e3f2a', '#d4f7dc')">PA</button>
-      <button class="btn btn-danger" onclick="setCountry(this, 'pe', '#3f1e1e', '#ffdada')">PE</button>
-      <button class="btn btn-warning" onclick="setCountry(this, 'py', '#3f351e', '#fff5d0')">PY</button>
-      <button class="btn btn-info" onclick="setCountry(this, 'sv', '#1e3f3f', '#d1f3f9')">SV</button>
-      <button class="btn btn-primary" onclick="setCountry(this, 'uy', '#1e2f3f', '#d0e8ff')">UY</button>
-      <button class="btn btn-success" onclick="setCountry(this, 've', '#1f3f1f', '#e8fce8')">VE</button>
+      <button class="btn btn-warning" onclick="setCountry(this, 'ar', '#3f351e', '#fff5d0')">AR</button>
+      <button class="btn btn-info" onclick="setCountry(this, 'bo', '#1e3f3f', '#d1f3f9')">BO</button>
+      <button class="btn btn-success" onclick="setCountry(this, 'cl', '#1f3f1f', '#e6f9e6')">CL</button>
+      <button class="btn btn-primary" onclick="setCountry(this, 'cr', '#1e2f3f', '#d0e8ff')">CR</button>
+      <button class="btn btn-warning" onclick="setCountry(this, 'do', '#3f3a1e', '#fffacc')">DO</button>
+      <button class="btn btn-danger" onclick="setCountry(this, 'ec', '#3f1e1e', '#ffdada')">EC</button>
+      <button class="btn btn-info" onclick="setCountry(this, 'gt', '#1e3f3f', '#d1f3f9')">GT</button>
+      <button class="btn btn-success" onclick="setCountry(this, 'hn', '#1f3f1f', '#e6f9e6')">HN</button>
+      <button class="btn btn-primary" onclick="setCountry(this, 'ni', '#1e2f3f', '#d0e8ff')">NI</button>
+      <button class="btn btn-danger" onclick="setCountry(this, 'pa', '#3f1e1e', '#ffdada')">PA</button>
+      <button class="btn btn-warning" onclick="setCountry(this, 'pe', '#3f351e', '#fff5d0')">PE</button>
+      <button class="btn btn-success" onclick="setCountry(this, 'py', '#1f3f1f', '#e8fce8')">PY</button>
+      <button class="btn btn-primary" onclick="setCountry(this, 'sv', '#1e2f3f', '#d0e8ff')">SV</button>
+      <button class="btn btn-danger" onclick="setCountry(this, 'uy', '#3f1e1e', '#ffdada')">UY</button>
+      <button class="btn btn-info" onclick="setCountry(this, 've', '#1e3f3f', '#d1f3f9')">VE</button>
     </div>
+
+
 
     <div class="input-section mx-auto">
       <h4 class="mb-3">🔎 Ingresa el Rider ID</h4>
-      <input type="number" class="form-control mb-3" id="inputNumber" placeholder="Rider ID aquí, plz" required>
-      <button class="btn btn-outline-info w-100" onclick="sendLink()">¡VAMOS!</button>
-      <div class="d-flex gap-2 mt-3">
-        <button class="btn btn-info w-50 btn-rooster" onclick="openRooster()">🐓 Rooster</button>
-        <button class="btn btn-info w-50 btn-ausencias" onclick="openAusencias()">📆 Ausencias</button>
-      </div>
+      <input type="number" class="form-control mb-3" id="inputNumber" placeholder="Id de orden" required>
+      <button class="btn btn-outline-danger w-100" onclick="sendLink()">Go Hurrier</button>
     </div>
   </div>
+  
   <div id="mesMensaje" class="mensaje-mes">
     Vamos por un <span id="mesNombre"></span> increíble ✨
   </div>
+
+
 
   <script>
     let selectedCountry = 'ninguno';
@@ -260,20 +266,8 @@
     function sendLink() {
       const input = document.getElementById('inputNumber').value;
       if (!input || isNaN(input)) return alert('Por favor, ingresa un número válido.');
-      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/cash-collection/courier/${input}`, '_blank');
+      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/v2/hurrier/order_details/${input}`, '_blank');
       document.getElementById('inputNumber').value = '';
-    }
-
-    function openRooster() {
-      const input = document.getElementById('inputNumber').value;
-      if (selectedCountry === 'ninguno') return alert('Primero selecciona un país.');
-      if (!input || isNaN(input)) return alert('Por favor, ingresa un Rider ID válido.');
-      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/workers?search_id=${input}`, '_blank');
-    }
-
-    function openAusencias() {
-      if (selectedCountry === 'ninguno') return alert('Primero selecciona un país.');
-      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/absence`, '_blank');
     }
 
     function toggleTheme() {
@@ -320,5 +314,7 @@
       }
     });
   </script>
+
+
 </body>
 </html>
