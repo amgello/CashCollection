@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>HeroCare Tickets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --dark-blue: #001529;
+      --blue: #1890FF;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: var(--dark-blue);
+      color: var(--white);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .page-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+
+    }
+ 
+
+    header {
+      padding: 60px 20px 40px;
+      text-align: center;
+      animation: slideInDown 1s ease-out;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin: 0;
+      color: var(--blue);
+    }
+
+    section.ticket-area {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .ticket-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      opacity: 0;
+      animation: fadeUp 1.2s ease-out 0.3s forwards;
+    }
+
+    .ticket-form label {
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .ticket-form input {
+      background-color: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 1.05rem;
+      color: var(--white);
+      transition: all 0.25s ease;
+    }
+
+    .ticket-form input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .ticket-form input:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 10px rgba(24, 144, 255, 0.3);
+    }
+
+    .ticket-form button {
+      background-color: var(--blue);
+      border: none;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      color: var(--white);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .ticket-form button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 18px rgba(24, 144, 255, 0.4);
+    }
+
+    footer {
+      padding: 30px 20px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.4);
+      font-size: 0.85rem;
+      margin-top: auto;
+      animation: fadeIn 1.4s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+
+    /* Wavy background */
+    .wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 140px;
+      background: linear-gradient(to right, rgba(24, 144, 255, 0.3), transparent);
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+      z-index: 0;
+      animation: floatWave 10s infinite linear alternate;
+    }
+    
+
+    body, .page-wrapper {
+        overflow-x: hidden;
+    }
+
+
+    @keyframes floatWave {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* Animations */
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (min-width: 768px) {
+      .ticket-form {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .ticket-form label {
+        flex-basis: 160px;
+        margin: 0;
+      }
+
+      .ticket-form input {
+        flex: 1;
+      }
+
+      .ticket-form button {
+        margin-left: 15px;
+        width: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="wave"></div>
+
+    <header>
+      <h1>HeroCare Tickets</h1>
+    </header>
+
+    <section class="ticket-area position-relative">
+      <form class="ticket-form" onsubmit="abrirTicket(); return false;">
+        <label for="ticketInput">🎯Ticket ID</label>
+        <input type="text" id="ticketInput" placeholder="e03c64f3-f8e4-4407-871c-1fd9eaac3ef5" required>
+        <button type="submit">GO Ticket</button>
+      </form>
+    </section>
+
+    <footer>
+      HeroCare Tool Pirata &copy; 2025 — Amgello
+    </footer>
+  </div>
+
+  <script>
+    function abrirTicket() {
+      const input = document.getElementById('ticketInput');
+      const valor = input.value.trim();
+
+      if (valor !== '') {
+        const url = `https://pedidosya-us.deliveryherocare.com/cases/${encodeURIComponent(valor)}`;
+        window.open(url, '_blank');
+        input.value = '';
+      }
+    }
+
+    document.getElementById('ticketInput').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        abrirTicket();
+      }
+    });
+  </script>
+</body>
+</html>
