@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Secciones con Estilo Oscuro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* === Escalado general === */
+html {
+  font-size: 18px; /* aumenta la base del rem */
+}
+
+.sops-link {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+body {
+  background: radial-gradient(circle at top left, #1c1c2b, #0f2027);
+  color: #f1f1f1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* === Título === */
+h3 {
+  color: #f8f9fa;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  font-size: 2.4rem;
+  margin-bottom: 2.5rem;
+}
+
+/* === Contenedor general === */
+.container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  max-width: 1000px;
+}
+
+/* === Botones principales === */
+.mb-4.d-flex button {
+  border-radius: 30px;
+  padding: 14px 34px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mb-4.d-flex button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1), transparent 70%);
+  transform: rotate(45deg);
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mb-4.d-flex button:hover::before {
+  opacity: 0.5;
+}
+
+.mb-4.d-flex button:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15);
+}
+
+/* === Colores personalizados para cada país === */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #ffffff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: #fff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: #fff;
+}
+
+.btn-warning {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: #000;
+}
+
+/* === Secciones === */
+.section {
+  display: none;
+  margin-top: 40px;
+  padding: 35px 25px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.06), 0 4px 20px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.section.active {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* === Botones secundarios === */
+.section a.btn {
+  border-radius: 20px;
+  font-size: 1.1rem;
+  padding: 12px 26px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+  background-color: transparent;
+  backdrop-filter: blur(3px);
+  min-width: 150px;
+  
+}
+
+.section a.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #FFFFFF;
+}
+/* === Encabezado principal === */
+h1, h3 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.2), 0 0 12px rgba(0, 0, 0, 0.8);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1.5px;
+  animation: glowFade 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowFade {
+  from {
+    text-shadow: 0 0 8px rgb(235, 68, 113), 0 0 12px rgba(0, 0, 0, 0.8);
+  }
+  to {
+    text-shadow: 0 0 12px rgba(255, 213, 98, 0.915), 0 0 18px rgba(0, 0, 0, 1);
+  }
+}
+
+/* === Subtítulo === */
+
+
+  </style>
+</head>
+<body>
+
+    <div class="sops-link">
+    <div class="position-relative">
+      <a href="https://amgello.github.io/CashCollection/Cash.html" class="btn btn-danger position-relative">
+        💵 Cash Collection
+      </a>
+    </div>
+  </div>
+  <div class="container text-center">
+    <h1>Pedidos Ya - Boost Channel</h1>
+    <br>
+    <h3 class="mb-4">Panel de Links</h3>
+
+
+    <!-- Botones principales -->
+    <div class="mb-4 d-flex justify-content-center flex-wrap gap-2">
+      <button class="btn btn-primary" onclick="showSection('section1')">AR</button>
+      <button class="btn btn-info" onclick="showSection('section2')">PE</button>
+      <button class="btn btn-success" onclick="showSection('section3')">CL</button>
+      <button class="btn btn-danger" onclick="showSection('section4')">GT</button>
+      <button class="btn btn-warning" onclick="showSection('section5')">CR</button>
+    </div>
+
+    <!-- Secciones con enlaces -->
+    <div id="section1" class="section">
+      <a href="https://admin.shopify.com/store/rider-shop-py-ar/customers?selectedColumns=CUSTOMER_NAME%2CNOTE%2CEMAIL_SUBSCRIPTION_STATUS%2CLOCATION%2CORDERS%2CAMOUNT_SPENT" class="btn btn-outline-primary" target="_blank">Shopify</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeoYlhr0NrAiPRzm2iwCZbAHEnS4bZIEfjIvM3jaDMYjs9LbQ/viewform" class="btn btn-outline-primary" target="_blank">Proveedores FL</a>
+    </div>
+
+    <div id="section2" class="section">
+      <a href="https://lookerstudio.google.com/u/0/reporting/af18afc6-fa59-4c51-9940-e5b430862144/page/9H79D" class="btn btn-outline-info" target="_blank">Cash Tracker</a>
+      <a href="https://lookerstudio.google.com/u/0/reporting/af18afc6-fa59-4c51-9940-e5b430862144/page/p_ul6v3roikd" class="btn btn-outline-info" target="_blank">Pedidos Autocompletados</a>
+      <a href="https://lookerstudio.google.com/u/0/reporting/af18afc6-fa59-4c51-9940-e5b430862144/page/p_69ptj6rikd" class="btn btn-outline-info" target="_blank">Devoluciones Hub</a>
+      <a href="https://docs.google.com/spreadsheets/d/1X-dFqNY7nwrnhnGDLxNmDFtOKRDx0HeXkEJ2skbKxRg/edit?gid=1936503684#gid=1936503684" class="btn btn-outline-info" target="_blank">Rezagados Cash tracker</a>
+    </div>
+
+    <div id="section3" class="section">
+      <a href="https://lookerstudio.google.com/u/0/reporting/3f07fddd-e684-4d12-8ba7-ef2709290bcd/page/B7BFE" class="btn btn-outline-success" target="_blank">Devoluciones a Dmart</a>
+    </div>
+
+    <div id="section4" class="section">
+      <a href="https://lookerstudio.google.com/u/0/reporting/2e9085cf-e71d-4aa0-87cb-d1a24c3493fe/page/p_akmrnjowod" class="btn btn-outline-danger" target="_blank">Devoluciones GT</a>
+    </div>
+
+    <div id="section5" class="section">
+      <a href="https://lookerstudio.google.com/u/0/reporting/98ce054d-2b6d-4447-8373-cb7097a57ca4/page/BtBBE" class="btn btn-outline-warning" target="_blank">Depósitos no reflejados</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc1UeXEnvLjxwGxyuCi-8nUXVYu4giNYrGEtUd6DH4ags9I3g/viewform" class="btn btn-outline-warning" target="_blank">Form Depositos</a>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
