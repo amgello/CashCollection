@@ -241,6 +241,8 @@
       <h4 class="mb-3">🔎 Ingresa el Rider ID</h4>
       <input type="number" class="form-control mb-3" id="inputNumber" placeholder="Id de orden" required>
       <button class="btn btn-outline-danger w-100" onclick="sendLink()">Go Hurrier</button>
+      <br><br>
+      <button class="btn btn-outline-info w-100" onclick="sendLink2()">Go BackOfiice</button>
     </div>
   </div>
   
@@ -251,7 +253,7 @@
 
 
   <script>
-    let selectedCountry = 'ninguno';
+    let selectedCountry = 'pendejo';
     let selectedButton = null;
 
     function setCountry(button, countryCode, darkBg, lightBg) {
@@ -268,6 +270,12 @@
       const input = document.getElementById('inputNumber').value;
       if (!input || isNaN(input)) return alert('Por favor, ingresa un número válido.');
       window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/v2/hurrier/order_details/${input}`, '_blank');
+      document.getElementById('inputNumber').value = '';
+    }
+    function sendLink2() {
+      const input = document.getElementById('inputNumber').value;
+      if (!input || isNaN(input)) return alert('Por favor, ingresa un número válido.');
+      window.open(`https://backoffice-app.pedidosya.com/#/orders/${input}`, '_blank');
       document.getElementById('inputNumber').value = '';
     }
 
