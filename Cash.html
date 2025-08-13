@@ -282,7 +282,7 @@
       const input = document.getElementById('inputNumber').value;
       if (selectedCountry === 'ninguno') return alert('Primero selecciona un país.');
       if (!input || isNaN(input)) return alert('Por favor, ingresa un Rider ID válido.');
-      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/workers?search_id=${input}`, '_blank');
+      window.open(`https://${selectedCountry}.us.logisticsbackoffice.com/dashboard/rooster/workers?filter_status=active_contract&page=1&size=10&search_id=${input}`, '_blank');
     }
 
     function openAusencias() {
