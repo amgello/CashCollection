@@ -6,6 +6,10 @@
   <title>Centro de SOPs</title>
   <link rel="icon" href="icono.png" type="image/png"> 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+
   <style>
     :root {
       --bg-light: #ffe4e1; /* Rosado claro */
@@ -26,7 +30,6 @@
     body {
       margin: 0;
       padding: 40px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: var(--bg-light);
       color: var(--text-dark);
       display: flex;
@@ -34,6 +37,8 @@
       align-items: center;
       overflow-x: hidden;
       transition: background 0.4s ease, color 0.4s ease;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
     }
 
     body.light-mode {
@@ -46,7 +51,7 @@
       color: var(--text-light);
     }
 
-    header h1 {
+    #h12 {
       font-size: 3rem;
       font-weight: 900;
       color: var(--accent-red);
@@ -66,7 +71,7 @@
       padding: 40px 20px;
       border-radius: 22px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       animation: fadeInUp 0.7s ease;
       display: flex;
       flex-direction: column;
@@ -82,8 +87,8 @@
     }
 
     section:hover {
-      transform: translateY(-6px) rotate(-0.5deg);
-      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     }
 
     section:nth-child(1) { border-top-color: var(--accent-blue); }
@@ -155,98 +160,228 @@
     }
 
     body:not(.light-mode) .theme-toggle {
-      background: #444;
+      background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);;
       color: #fff;
     }
 
+
     
-    /* Botón base tipo Bootstrap */
-.btn {
-  display: inline-block;
-  font-weight: 600;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-decoration: none;
-  cursor: pointer;
-}
+      /* Botón base tipo Bootstrap */
+  .btn {
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    cursor: pointer;
+  }
 
-/* Botón amarillo (warning) */
-.btn-warning {
-  background-color: #ffc107;
-  color: #222;
-}
+  /* Botón amarillo (warning) */
+  .btn-warning {
+    background-color: #ffc107;
+    color: #222;
+  }
 
-.btn-warning:hover {
-  background-color: #ffb300;
-  transform: scale(1.05);
-}
+  .btn-warning:hover {
+    background-color: #ffb300;
+    transform: scale(1.05);
+  }
 
-/* Botón gris oscuro (secondary) */
-.btn-secondary {
-  background-color: #444;
-  color: #fff;
-}
+  /* Botón gris oscuro (secondary) */
+  .btn-secondary {
+    background-color: #444;
+    color: #fff;
+  }
 
-.btn-secondary:hover {
-  background-color: #333;
-  transform: scale(1.05);
-}
+  .btn-secondary:hover {
+    background-color: #333;
+    transform: scale(1.05);
+  }
 
-/* Badge estilo Bootstrap */
-.badge {
-  position: absolute;
-  top: -8px;
-  right: -12px;
-  background: red;
-  color: white;
-  font-size: 0.7rem;
-  font-weight: bold;
-  padding: 2px 6px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
+  /* Badge estilo Bootstrap */
+  .badge {
+    position: absolute;
+    top: -8px;
+    right: -12px;
+    background: red;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
 
-/* Posicionamiento externo de botones flotantes */
-.sops-link, .theme-toggle {
-  position: fixed;
-  z-index: 1000;
-}
+  /* Posicionamiento externo de botones flotantes */
+/*  .sops-link, .theme-toggle {
+    position: fixed;
+    z-index: 1000;
+  }
 
-.sops-link {
-  top: 20px;
-  left: 20px;
-}
+  .sops-link {
+    top: 20px;
+    left: 20px;
+  }
 
-.theme-toggle {
-  top: 20px;
-  right: 20px;
-}
+  .theme-toggle {
+    top: 20px;
+    right: 20px;
+  } */
+  /* ======== Estilos refinados ======== */
+
+  /* Fondo general más suave */
+  body.light-mode {
+    background: #f8fafc; /* gris muy claro */
+    color: #1f2937;
+  }
+
+  body:not(.light-mode) {
+    background: #0f172a; /* azul oscuro elegante */
+    color: #f1f5f9;
+  }
+
+  /* Encabezado */
+  #h12 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    text-align: center;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+  }
+
+  /* Tarjetas */
+  section {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  body:not(.light-mode) section {
+    background: #1e293b;
+    border: 1px solid #334155;
+  }
+
+  section:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.18);
+  }
+
+  /* Títulos de secciones */
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 18px;
+    color: inherit;
+  }
+
+  /* Botones */
+  .buttons a {
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .buttons a:hover {
+    background: #2563eb; /* azul más intenso */
+    transform: translateY(-2px);
+  }
+
+  /* Botones flotantes */
+  .btn {
+    border-radius: 10px;
+    font-weight: 600;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .btn-warning {
+    background: #facc15;
+    color: #111;
+  }
+
+  .btn-warning:hover {
+    background: #eab308;
+  }
+
+  .btn-secondary {
+    background: #475569;
+    color: #fff;
+  }
+  .btn-secondary:hover {
+    background: #334155;
+  }
+
+  /* Badges */
+  .badge {
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    border-radius: 50%;
+  }
 
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-    @keyframes popIn {
-      0% { transform: scale(0.9); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+  @keyframes popIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Glassmorphism en tarjetas */
+  section {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* Dark mode con glass */
+  body:not(.light-mode) section {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+  }
+
+  /* Badges más elegantes */
+  .badge {
+    font-size: 0.6rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+    background: #ef4444; /* rojo pro */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+  }
   </style>
 
 
 
 </head>
+
+
+
 <body>
+
+
+
+  
   <div class="cash-link">
     <div class="position-relative">
       <a href="https://amgello.github.io/CashCollection/Orders.html" class="btn btn-danger position-relative">
@@ -273,9 +408,9 @@
       </div>
     </div>  
   
-  <header>
-    <h1>Centro de SOPs</h1>
-  </header>
+
+    <h1 id="h12">Centro de SOPs</h1>
+
 
   <div class="container">
     <section>

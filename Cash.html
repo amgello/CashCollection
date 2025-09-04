@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PEYA Shortcuts</title>
   <link rel="icon" href="icono.png" type="image/png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   <style>
     :root {
       --color-bg-dark: #0d1117;
@@ -186,43 +187,117 @@
   </style>
 </head>
 <body>
-  <div class="Dashes-link">
-    <div class="position-relative">
-      <a href="https://amgello.github.io/CashCollection/Dashes.html" class="btn btn-info position-relative">
-        📝 Dashes
-      </a>
-    </div>
-  </div>
 
-  <div class="cash-link">
-    <div class="position-relative">
-      <a href="https://amgello.github.io/CashCollection/Orders.html" class="btn btn-danger position-relative">
-        🥗 Pedidos
-        <span class="badge" id="badgeSops">new</span>
-      </a>
-    </div>
-  </div>
+  <nav class="navbar navbar-expand-lg bg-transparent" style="margin-top: -30px; margin-bottom: -70px;">
+    <div class="container-fluid">
 
-  <div class="sops-link">
-    <div class="position-relative">
-      <a href="https://amgello.github.io/CashCollection/Boost.html" class="btn btn-warning position-relative">
-        🛠️ SOPs
-        <span class="badge" id="badgeSops">new</span>
-      </a>
-    </div>
-  </div>
+      <a class="navbar-brand text-white" href="#" style="font-size: 50px; font-weight: bolder; font-family: 'Trebuchet MS';">🚀 PeYa</a>
 
-  <div class="theme-toggle">
-    <div class="position-relative">
-      <button class="btn btn-secondary position-relative" onclick="toggleTheme()">
-        🌓 dark mode
-        <span class="badge" id="badgeNew">new</span>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" 
+        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
+
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          <li class="nav-item dropdown"> 
+            <a class="nav-link dropdown-toggle text-white" href="#" id="dropdown1" role="button"  
+              data-bs-toggle="dropdown" aria-expanded="false"> 
+              Enlaces
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown1">
+              <li><a class="dropdown-item" href="https://admin.shopify.com/store/rider-shop-py-ar/customers?selectedColumns=CUSTOMER_NAME%2CNOTE%2CEMAIL_SUBSCRIPTION_STATUS%2CLOCATION%2CORDERS%2CAMOUNT_SPENT">AR - Shopify</a></li>
+              <li><a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSeoYlhr0NrAiPRzm2iwCZbAHEnS4bZIEfjIvM3jaDMYjs9LbQ/viewform">AR - Formulario Cambios</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="https://lookerstudio.google.com/u/0/reporting/af18afc6-fa59-4c51-9940-e5b430862144/page/9H79D">PE - Cash Tracker</a></li>
+              <li><a class="dropdown-item" href="https://lookerstudio.google.com/u/0/reporting/af18afc6-fa59-4c51-9940-e5b430862144/page/p_ul6v3roikd">PE - Pedidos Autocompletados</a></li>
+              <li><a class="dropdown-item" href="https://lookerstudio.google.com/u/0/reporting/af18afc6-fa59-4c51-9940-e5b430862144/page/p_69ptj6rikd">PE - Devoluciones Hub</a></li>
+              <li><a class="dropdown-item" href="https://docs.google.com/spreadsheets/d/1X-dFqNY7nwrnhnGDLxNmDFtOKRDx0HeXkEJ2skbKxRg/edit?gid=1936503684#gid=1936503684">PE - Rezagados Cash Tracker</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="https://lookerstudio.google.com/u/0/reporting/3f07fddd-e684-4d12-8ba7-ef2709290bcd/page/B7BFE">CL - Devoluciones a DMART </a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="https://lookerstudio.google.com/u/0/reporting/2e9085cf-e71d-4aa0-87cb-d1a24c3493fe/page/p_akmrnjowod">GT - Devoluciones a HUB </a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="https://lookerstudio.google.com/u/0/reporting/98ce054d-2b6d-4447-8373-cb7097a57ca4/page/BtBBE">CR - Depósitos no reflejados </a></li>
+              <li><a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSc1UeXEnvLjxwGxyuCi-8nUXVYu4giNYrGEtUd6DH4ags9I3g/viewform">CR - Formulario depósitos</a></li>
+              <li><a class="dropdown-item" href="https://lookerstudio.google.com/reporting/d2040bf0-8b2b-4f98-bafe-026bbf5feb8b/page/p_q98wuxqe9c">CR - Dasboard pedidos</a></li>
+
+            </ul>
+          </li>
+
+
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://amgello.github.io/CashCollection/Boost.html">Procesos</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link text-white" href="https://amgello.github.io/CashCollection/Orders.html">HU & BO</a>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-light fs-4" onclick="toggleTheme()" style="border-radius: 100%;">
+              🌓
+            </button>
+          </li>
+
+        </ul>
+      </div>
     </div>
-  </div>
+  </nav>
+
+  <style>
+    /* Transparent navbar */
+
+    /* Submenu estilo */
+    .dropdown-submenu {
+      position: relative;
+    }
+
+    .dropdown-submenu > .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-left: .1rem;
+      margin-right: .1rem;
+    }
+
+
+    /* Estilo tipo botón para enlaces del navbar */
+.navbar .nav-link {
+  background-color: var(--color-box-dark);
+  color: var(--color-text-dark) !important;
+  border: 1px solid var(--color-border-dark);
+  padding: 8px 16px;
+  border-radius: 25px;
+  margin: 4px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.navbar .nav-link:hover,
+.navbar .nav-link:focus {
+  background-color: var(--color-text-dark);
+  color: var(--color-bg-dark) !important;
+  transform: scale(1.05);
+}
+
+/* Modo claro */
+body.light-mode .navbar .nav-link {
+  background-color: var(--color-box-light);
+  color: var(--color-text-light) !important;
+  border: 1px solid var(--color-border-light);
+}
+
+body.light-mode .navbar .nav-link:hover,
+body.light-mode .navbar .nav-link:focus {
+  background-color: var(--color-text-light);
+  color: var(--color-bg-light) !important;
+}
+
+  </style>
 
   <div class="container text-center">
-    <h1 class="mb-2">🚀 Cash Collection PEYA</h1>
+    <h1 class="mb-2">💸 Cash Collection</h1>
     <h2 class="mb-4">País seleccionado: <span id="selectedCountryDisplay">NN</span></h2>
 
     <div class="country-buttons d-flex flex-wrap justify-content-center" id="countryBtns">
